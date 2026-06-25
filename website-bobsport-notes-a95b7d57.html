@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>bob体育 · 站点介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f6fafb;
+      color: #1e2c3a;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* 页面容器 */
+    .wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 首页横幅 hero */
+    .hero {
+      background: linear-gradient(148deg, #0f3b4a 0%, #1b5a6b 40%, #226d7c 100%);
+      border-radius: 32px 32px 32px 32px;
+      margin: 28px 0 36px;
+      padding: 50px 28px 44px;
+      color: white;
+      box-shadow: 0 18px 30px -12px rgba(17, 90, 100, 0.30);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -60px;
+      top: -40px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(100, 200, 210, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 0 8px 0 6px;
+      border-radius: 30px;
+      backdrop-filter: blur(2px);
+    }
+
+    .hero .sub {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      max-width: 540px;
+      margin-bottom: 6px;
+      line-height: 1.5;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.20);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-top: 18px;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(2px);
+    }
+
+    /* 背景说明卡片 */
+    .context-card {
+      background: white;
+      border-radius: 24px;
+      padding: 32px 28px;
+      margin: 32px 0;
+      box-shadow: 0 4px 14px rgba(0, 30, 40, 0.04);
+      border-left: 6px solid #2c8a9b;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 20px 30px;
+    }
+
+    .context-card .flag {
+      flex: 1 1 100%;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #2c8a9b;
+      font-weight: 500;
+      margin-bottom: -6px;
+    }
+
+    .context-card .text {
+      flex: 3 1 280px;
+    }
+
+    .context-card .text p {
+      margin-bottom: 14px;
+    }
+
+    .context-card .highlight-box {
+      flex: 1 1 160px;
+      background: #ecf6f8;
+      border-radius: 20px;
+      padding: 18px 16px;
+      font-size: 0.9rem;
+      color: #1c4f5c;
+      border: 1px solid #c6e2e8;
+    }
+
+    .context-card .highlight-box strong {
+      display: block;
+      font-size: 1rem;
+      color: #0a3b46;
+      margin-bottom: 6px;
+    }
+
+    /* 三段网格卡片 (杂志式) */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 28px;
+      margin: 44px 0 20px;
+    }
+
+    .card-item {
+      background: white;
+      border-radius: 28px;
+      padding: 30px 22px 28px;
+      box-shadow: 0 8px 20px -8px rgba(0, 55, 60, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      border: 1px solid #e6f0f3;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 28px -14px rgba(30, 110, 120, 0.18);
+      border-color: #b5d8e0;
+    }
+
+    .card-icon {
+      display: inline-block;
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 12px;
+      color: #2c8a9b;
+      background: #def0f4;
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 300;
+      font-size: 1.8rem;
+    }
+
+    .card-item h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #0f3b4a;
+      margin-bottom: 10px;
+      letter-spacing: -0.2px;
+    }
+
+    .card-item p {
+      font-size: 0.98rem;
+      color: #2d4653;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .card-item .meta-tag {
+      display: inline-block;
+      background: #eef5f7;
+      padding: 4px 14px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      color: #1d5f6d;
+      align-self: flex-start;
+      border: 1px solid #cbe4ea;
+    }
+
+    /* 页尾访问提示区域 */
+    .footer-visit {
+      background: #e7f2f5;
+      border-radius: 32px;
+      padding: 36px 30px 34px;
+      margin: 48px 0 30px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border: 1px solid #cae0e6;
+    }
+
+    .footer-visit .info {
+      flex: 2 1 240px;
+    }
+
+    .footer-visit .info p {
+      font-size: 1rem;
+      color: #1a4452;
+      margin-bottom: 6px;
+    }
+
+    .footer-visit .info .small-note {
+      font-size: 0.85rem;
+      color: #3f6775;
+      opacity: 0.8;
+    }
+
+    .footer-visit .action {
+      flex: 1 1 140px;
+      text-align: right;
+    }
+
+    .footer-visit .action a {
+      display: inline-block;
+      background: #1b687b;
+      color: white;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 60px;
+      letter-spacing: 0.5px;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 4px 8px rgba(15, 80, 90, 0.12);
+    }
+
+    .footer-visit .action a:hover,
+    .footer-visit .action a:focus {
+      background: #0f4f5f;
+      transform: scale(1.02);
+    }
+
+    /* 底部 fine print */
+    .fine-print {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6c8b96;
+      padding: 24px 0 32px;
+      border-top: 1px solid #d4e5ea;
+      margin-top: 10px;
+    }
+
+    .fine-print span {
+      background: #eef7f9;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 34px 20px 32px;
+        border-radius: 24px;
+        margin-top: 16px;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .hero .sub {
+        font-size: 0.95rem;
+      }
+
+      .context-card {
+        padding: 24px 18px;
+        flex-direction: column;
+      }
+
+      .context-card .highlight-box {
+        width: 100%;
+      }
+
+      .grid-cards {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .footer-visit {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 20px;
+      }
+
+      .footer-visit .action {
+        text-align: center;
+        width: 100%;
+      }
+
+      .footer-visit .action a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- HERO 横幅 -->
+    <div class="hero">
+      <h1><span>bob体育</span> · 站点速览</h1>
+      <div class="sub">一份关于信息聚合与内容结构的简明叙述，从可信度与实用性的角度，梳理平台的基本轮廓。</div>
+      <div class="badge">🧭 杂志式概览 · 2025</div>
+    </div>
+
+    <!-- 背景说明卡片 -->
+    <div class="context-card">
+      <div class="flag">⸺ 背景简述</div>
+      <div class="text">
+        <p><strong>bob体育</strong> 所对应的网站定位为综合性信息展示与导航入口，面向对体育资讯、赛事数据及内容整合有需求的用户。平台本身不生产原始数据，而是通过结构化索引与分类整理，提供相对清晰的浏览路径。</p>
+        <p>在信息过载的环境下，一个轻量且克制的信息聚合节点，可以降低用户的检索成本。该站的设计初衷即围绕这一逻辑展开：减少冗余，提升可达性。</p>
+      </div>
+      <div class="highlight-box">
+        <strong>📋 站点属性</strong>
+        内容聚合 · 导航型<br>
+        更新节奏：常规维护<br>
+        适用场景：日常浏览 & 信息参考
+      </div>
+    </div>
+
+    <!-- 三段自然介绍：网格卡片 -->
+    <div class="grid-cards">
+      <div class="card-item">
+        <div class="card-icon">🏷️</div>
+        <h3>结构化的索引</h3>
+        <p>通过对不同主题、赛事类型及区域内容进行归类，<a href="https://website-bobsport.com" style="color: #1b687b; text-decoration: underline; text-underline-offset: 3px; font-weight: 500;">bob体育</a> 试图让访问者以较低的认知负担找到感兴趣的方向。每一类目均经过基础筛选，避免信息噪音。</p>
+        <span class="meta-tag">分类逻辑</span>
+      </div>
+      <div class="card-item">
+        <div class="card-icon">🔍</div>
+        <h3>浏览体验的克制</h3>
+        <p>页面强调直观与可读，减少不必要的弹窗与跳转。无论从移动端还是桌面端访问，排版都围绕“内容优先”进行调整。没有过度营销的干扰，重点在于信息本身的可获取性。</p>
+        <span class="meta-tag">设计原则</span>
+      </div>
+      <div class="card-item">
+        <div class="card-icon">🧩</div>
+        <h3>持续维护与迭代</h3>
+        <p>站点运营方会定期核对链接有效性、更新内容模块，并依据用户反馈微调分类结构。这种渐进式的维护方式，有助于保持信息的新鲜度与可靠性，避免成为僵化的信息孤岛。</p>
+        <span class="meta-tag">运维节奏</span>
+      </div>
+    </div>
+
+    <!-- 页尾访问提示 自然嵌入链接 -->
+    <div class="footer-visit">
+      <div class="info">
+        <p>若您希望进一步了解站点全貌，可前往 <a href="https://website-bobsport.com" style="color: #0f3b4a; font-weight: 600; text-decoration: underline; text-underline-offset: 2px;">bob体育</a> 直接浏览。所有内容均以当下版本为准。</p>
+        <div class="small-note">本页面仅作客观介绍，不构成任何引导或承诺。</div>
+      </div>
+      <div class="action">
+        <a href="https://website-bobsport.com">bob体育</a>
+      </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="fine-print">
+      <span>站点索引页 · 内容定期复核</span> — 保持审慎与开放
+    </div>
+  </div>
+</body>
+</html>
